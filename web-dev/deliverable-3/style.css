@@ -87,8 +87,8 @@ h3 {
     color: rgb(197, 197, 197);
 }
 
-h3 :hover {
-    color: red;
+h3 {
+    color: white;
 }
 
 h4 {
@@ -97,16 +97,33 @@ h4 {
 }
 
 h5 {
-    font-size: 18px;
-    margin: 0;
+    font-size: 15px;
+    color: aliceblue;
 }
 
-.movie-entry {
-    
+.movie-entry a:link,
+a:visited {
+
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.movie-entry a:hover {
+    background-color: red;
 }
 
 a {
     display: block;
+    color: rgb(197, 197, 197);
+}
+
+
+
+a:hover {
+    color: red;
 }
 
 p {
