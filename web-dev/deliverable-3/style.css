@@ -37,6 +37,21 @@ body {
     border: none;
 }
 
+label {
+
+    color: rgb(255, 146, 146);
+
+}
+
+td {
+    color: white;
+}
+
+.subheading {
+    font-size: 30px;
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
 
     .topnav a,
@@ -117,7 +132,7 @@ a:visited {
 }
 
 a {
-    display: block;
+
     color: rgb(197, 197, 197);
 }
 
@@ -174,4 +189,74 @@ footer {
 
 footer p {
     padding-top: 1.25em;
+}
+
+.row-cco {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%;
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%;
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container {
+
+    padding: 5px 20px 15px 20px;
+
+    border-radius: 3px;
+    margin: auto;
+    width: 100%;
+
+}
+
+.admin-cat {
+
+
+    border: 2px solid lightgrey;
+}
+
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+.btn {
+
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn {
+    background-color: red;
 }

@@ -24,7 +24,7 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li id="menu-item-showtimes">
-                        <a href="movies.html">Showtimes</a>
+                        <a href="movies.html">Now Playing</a>
                     </li>
                     <li id="menu-item-login">
                         <a href="login.html">Login</a>
@@ -40,66 +40,58 @@
         </nav>
     </div>
     <div className="">
-        <span className="m-auto">
-
-            <div class="col-75">
-                <div class="container">
-
+        <div class="col-75">
+            <div class="container">
+                <div class="col-50">
+                    <h2>Payment</h2>
+                    <div class="col-50">
+                        <p for="ccnum">Credit or Debit Card Number</p>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="" />
+                    </div>
                     <div class="row">
                         <div class="col-50">
-                            <h3><b>Payment</b></h3>
-                            <label for="ccnum">Credit or Debit Card Number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="" />
-                            <div class="row">
-                                <div class="col-50">
-                                    <label for="expmonth">Expiration Month</label>
-                                    <select name="month" id="month">
-                                        <option selected value='1'>Jan</option>
-                                        <option value='2'>Feb</option>
-                                        <option value='3'>Mar</option>
-                                        <option value='4'>Apr</option>
-                                        <option value='5'>May</option>
-                                        <option value='6'>Jun</option>
-                                        <option value='7'>Jul</option>
-                                        <option value='8'>Aug</option>
-                                        <option value='9'>Sep</option>
-                                        <option value='10'>Oct</option>
-                                        <option value='11'>Nov</option>
-                                        <option value='12'>Dec</option>
-                                    </select>
-                                </div>
-                                <div class="col-50">
-                                    <label for="expyear">Expiration Year</label>
-                                    <select name="year" id="year">
-                                        <option value='1'>2022</option>
-                                        <option value='2'>2023</option>
-                                        <option value='3'>2024</option>
-                                        <option value='4'>2025</option>
-                                        <option value='5'>2026</option>
-                                        <option value='6'>2027</option>
-                                        <option value='7'>2028</option>
-                                        <option value='8'>2029</option>
-                                        <option value='9'>2030</option>
-                                        <option value='10'>2031</option>
-                                    </select>
-                                </div>
-                                <div class="col-50">
-                                    <label for="cvc">Security Code</label>
-                                    <input type="text" id="cvc" name="cvc" placeholder="" />
-                                </div>
-                            </div>
+                            <p for="expmonth">Expiration Month</p>
+                            <select name="month" id="month">
+                                <option value='1'>Jan</option>
+                                <option value='2'>Feb</option>
+                                <option value='3'>Mar</option>
+                                <option value='4'>Apr</option>
+                                <option value='5'>May</option>
+                                <option value='6'>Jun</option>
+                                <option value='7'>Jul</option>
+                                <option value='8'>Aug</option>
+                                <option value='9'>Sep</option>
+                                <option value='10'>Oct</option>
+                                <option value='11'>Nov</option>
+                                <option value='12'>Dec</option>
+                            </select>
+                        
+                            <p for="expyear">Expiration Year</p>
+                            <select name="year" id="year">
+                                <option value='1'>2022</option>
+                                <option value='2'>2023</option>
+                                <option value='3'>2024</option>
+                                <option value='4'>2025</option>
+                                <option value='5'>2026</option>
+                                <option value='6'>2027</option>
+                                <option value='7'>2028</option>
+                                <option value='8'>2029</option>
+                                <option value='9'>2030</option>
+                                <option value='10'>2031</option>
+                            </select>
                         </div>
-                        <a href="confirmation.html" class="btn">Pay Now</a>
-                        <a href="index.html" class="co">Cancel Order</a>
+                        <div class="col-50">
+                            <p for="cvc">Security Code</p>
+                            <input type="text" id="cvc" name="cvc" placeholder="" />
+                        </div>
                     </div>
-
                 </div>
-
+                <a href="confirmation.html" class="btn">Pay Now</a>
+                <a href="index.html">Cancel Order</a>
             </div>
 
+        </div>
 
-
-
-        </span>
     </div>
+
 </body>
