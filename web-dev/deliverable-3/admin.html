@@ -11,7 +11,7 @@
 <body>
     <header id="header" role="banner">
         <div id="header-left">
-            <h1 href="index.html" title="Cinema Bookings">Cinema Bookings</h1>
+            <h1 href="index.html" title="UGA Theaters">UGA Theaters</h1>
 
         </div>
     </header>
@@ -39,7 +39,7 @@
             </div>
         </nav>
     </div>
-    <div id="add-movie" class="admin-cat">
+    <div id="add-movie" class="container">
         <center>
             <h3>Add Movie</h3>
             <table class="movie-table">
@@ -110,10 +110,10 @@
                     <td><input type="date" size="60" name="release-date"></td>
                 </tr>
                 <tr>
-                    <td class="table-content">Delist Date:</td>
+                    <td class="table-content">Archive Date:</td>
                 </tr>
                 <tr>
-                    <td><input type="date" size="60" name="delist-date"></td>
+                    <td><input type="date" size="60" name="Archive-date"></td>
                 </tr>
                 <tr>
                     <td align="center">
@@ -123,7 +123,7 @@
             </table>
         </center>
     </div>
-    <div id="add-showtime" class="admin-cat">
+    <div id="add-showtime" class="container">
         <center>
             <h3>Add Showtime</h3>
             <table class="movie-table" style="margin-bottom: 30px;">
@@ -152,7 +152,7 @@
             </table>
         </center>
     </div>
-    <div id="delete-movie" class="admin-cat">
+    <div id="delete-movie" class="container">
         <center>
             <h3>Delete Movie</h3>
             <table class="movie-table">
@@ -176,7 +176,7 @@
             </table>
         </center>
     </div>
-    <div id="edit-movie" class="admin-cat">
+    <div id="edit-movie" class="container">
         <center>
             <h3>Edit Movie</h3>
             <table class="movie-table">
@@ -259,20 +259,20 @@
                     <td><input type="date" size="60" name="release-date"></td>
                 </tr>
                 <tr>
-                    <td class="table-content">Delist Date:</td>
+                    <td class="table-content">Archive Date:</td>
                 </tr>
                 <tr>
-                    <td><input type="date" size="60" name="delist-date"></td>
+                    <td><input type="date" size="60" name="Archive-date"></td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <input type="submit" value="Sumbit Changes">
+                        <input type="submit" value="Submit Changes">
                     </td>
                 </tr>
             </table>
         </center>
     </div>
-    <div id="manage-promos" class="admin-cat">
+    <div id="manage-promos" class="container">
         <center>
             <h3>Manage Promotions</h3>
             <div id="add-promo">
@@ -288,6 +288,11 @@
                     <tr>
                         <td align="center">
                             Discount: <input type="text" name="discount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            Start Date: <input type="date" name="start-date">
                         </td>
                     </tr>
                     <tr>
@@ -319,6 +324,11 @@
                     </tr>
                     <tr>
                         <td align="center">
+                            Start Date: <input type="date" name="start-date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
                             Expiration Date: <input type="date" name="exp-date">
                         </td>
                     </tr>
@@ -331,7 +341,7 @@
                 <div id="add-promo">
                     <table>
                         <tr>
-                            <h4>Delete a Promotion</h4>
+                            <h4>Archive a Promotion</h4>
                         </tr>
                         <tr>
                             <td align="center">
@@ -340,12 +350,43 @@
                         </tr>
                         <tr>
                             <td align="center">
-                                <input type="submit" value="Delete">
+                                <input type="submit" value="Archive">
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
+        </center>
+    </div>
+    <div id="manage-users" class="container">
+        <center>
+            <h3>Manage Users</h3>
+            <table class="user-table">
+                <tr>
+                    <td align="center">
+                        <select name="user-id">
+                            <option value="default">Select a User</option>
+                            <option value="user0">0000 - $Admin</option>
+                            <option value="user1">0001 - John Smith</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <select name="Status">
+                            <option value="default">User Status</option>
+                            <option value="status0">Active</option>
+                            <option value="status1">Inactive</option>
+                            <option value="status2">Removed</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="submit" value="Submit Changes">
+                    </td>
+                </tr>
+            </table>
         </center>
     </div>
 </body>

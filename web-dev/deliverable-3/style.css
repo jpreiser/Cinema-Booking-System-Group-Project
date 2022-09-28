@@ -74,11 +74,12 @@ td {
     padding: 8px;
 }
 
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
+.row {
+    display: flex;
+    flex-direction: row;
+    
 }
+
 
 h1 {
     text-shadow: rgb(44, 41, 41) 4px 3px 2px;
@@ -117,19 +118,6 @@ h5 {
     font-style: italic;
 }
 
-.movie-entry a:link,
-a:visited {
-
-    background-color: #f44336;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.movie-entry a:hover {
-    background-color: red;
-}
 
 a {
 
@@ -138,10 +126,6 @@ a {
 
 li {
     list-style-type: none;
-}
-
-a:hover {
-    color: red;
 }
 
 p {
@@ -170,33 +154,7 @@ li {
 
 header div {
     width: fit-content;
-    margin-left: 13rem;
-}
-
-header img {
-    float: left;
-    padding: 1rem;
-}
-
-footer {
-    background: red;
-    height: 50px;
-    text-align: center;
-    margin: 0 0 0 0;
-    font-size: small;
-    color: white;
-}
-
-footer p {
-    padding-top: 1.25em;
-}
-
-.row-cco {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0 -16px;
+    margin-bottom: 10px;
 }
 
 .col-25 {
@@ -222,20 +180,11 @@ footer p {
 
 .container {
 
-    padding: 5px 20px 15px 20px;
-
+    background-color:rgb(58, 58, 58);
+    padding: 15px 20px 15px 20px;
     border-radius: 3px;
-    margin: auto;
-    width: 100%;
-
+    margin: 10px;
 }
-
-.admin-cat {
-
-
-    border: 2px solid lightgrey;
-}
-
 
 label {
     margin-bottom: 10px;
@@ -244,8 +193,8 @@ label {
 
 
 span.price {
-    float: right;
     color: grey;
+    float: right;
 }
 
 .btn {
@@ -255,8 +204,17 @@ span.price {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    padding: 5px;
 }
 
-.btn {
+.btn:hover {
     background-color: red;
+}
+
+.plain-text-link:hover {
+    color: red;
+}
+
+.register input {
+    display: table-cell;
 }
