@@ -1,4 +1,4 @@
-package businessLogic
+package businessLogic.user
 
 class CardInfo(_number: String, _ccv: Byte, _expiration: Byte, _billingAddress: String, _user: User){
     var number: String = _number

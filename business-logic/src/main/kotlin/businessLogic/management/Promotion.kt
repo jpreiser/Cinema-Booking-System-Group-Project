@@ -1,4 +1,4 @@
-package businessLogic
+package businessLogic.management
 
 import java.util.Date
 

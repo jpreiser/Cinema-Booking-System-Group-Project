@@ -1,18 +1,18 @@
-package businessLogic
+package businessLogic.management
 
 class Movie(_title: String){
     var title = _title
-        //private set
+        internal set
     var category: String? = null
-        //private set
+        internal set
     var cast = listOf<String>()
-        //private set
+        internal set
     var director: String? = null
-        //private set
+        internal set
     var producer: String? = null
-        //private set
+        internal set
     var trailerLink: String? = null
-        //private set
+        internal set
     var showings = listOf<Showing>()
     var rating: FilmRating? = null
 

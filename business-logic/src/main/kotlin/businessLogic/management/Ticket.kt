@@ -1,4 +1,4 @@
-package businessLogic
+package businessLogic.management
 
 class Ticket {
     val price: Double? = null

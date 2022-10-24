@@ -1,4 +1,6 @@
-package businessLogic
+package businessLogic.management
+
+import businessLogic.user.*
 
 class Booking {
     var ticketCount: Int? = null

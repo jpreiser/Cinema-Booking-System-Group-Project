@@ -1,4 +1,4 @@
-package businessLogic
+package businessLogic.management
 
 import java.time.Duration
 import java.time.LocalDateTime
