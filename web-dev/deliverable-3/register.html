@@ -40,35 +40,84 @@
         </nav>
     </div>
     <div class="container">
-        <h2>Register an Account</h2>
+        <h2>Create an Account</h2>
+        <center>
+            <h4>*Required Fields</h4>
+        </center>
         <div class="register">
-            <p>
-                <label><b>Email Address</b></label>
-                <input type="text" placeholder="Email">
-            </p>
-            <p>
-                <label><b>Password</b></label>
-                <input type="text" placeholder="Password">
-            </p>
-            <p>
-                <label><b>Confirm Password</b></label>
-                <input type="text" placeholder="Confirm Password">
-            </p>
-            <p>
-                <label><b>Name</b></label>
-                <input type="text" placeholder="First Name">
-            
-                <input type="text" placeholder="Last Name">
-            </p>
-            <p>
-                <label><b>Date of Birth</b></label>
-                <input type="date">
-            </p>
-            <button><a href="reg-confirm.html" style="color: #101010;">Submit</a></button>
+            <center>
+                <form>
+                    <p>
+                        <label><b>*Email Address</b></label>
+                        <input type="text" placeholder="Email">
+                    </p>
+                    <p>
+                        <label><b>*Password</b></label>
+                        <input type="text" placeholder="Password">
+                    </p>
+                    <p>
+                        <label><b>*Confirm Password</b></label>
+                        <input type="text" placeholder="Confirm Password">
+                    </p>
+                    <p>
+                        <label><b>*Name</b></label>
+                        <input type="text" placeholder="First Name">
+
+                        <input type="text" placeholder="Last Name">
+                    </p>
+                    <p>
+                        <label><b>*Date of Birth</b></label>
+                        <input type="date">
+                    </p>
+                    <p>
+                        <label><b>Credit or Debit Card Number</b></label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="" />
+                    </p>
+                    <p>
+                        <label><b>Expiration Date</b></label>
+                        <select name="month" id="month">
+                            <option value='1'>Jan</option>
+                            <option value='2'>Feb</option>
+                            <option value='3'>Mar</option>
+                            <option value='4'>Apr</option>
+                            <option value='5'>May</option>
+                            <option value='6'>Jun</option>
+                            <option value='7'>Jul</option>
+                            <option value='8'>Aug</option>
+                            <option value='9'>Sep</option>
+                            <option value='10'>Oct</option>
+                            <option value='11'>Nov</option>
+                            <option value='12'>Dec</option>
+                        </select>
+                        <select name="year" id="year">
+                            <option value='1'>2022</option>
+                            <option value='2'>2023</option>
+                            <option value='3'>2024</option>
+                            <option value='4'>2025</option>
+                            <option value='5'>2026</option>
+                            <option value='6'>2027</option>
+                            <option value='7'>2028</option>
+                            <option value='8'>2029</option>
+                            <option value='9'>2030</option>
+                            <option value='10'>2031</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label><b>Security Code</b></label>
+                        <input type="text" id="cvc" name="cvc" placeholder="" />
+                    </p>
+                    <!---
+                    <input type="checkbox" id="promos" value="promos">
+  <label> I would like to receive emails about promotions</label><br>
+                -->
+                </form>
+                <button><a href="reg-confirm.html" style="color: #101010;">Submit</a></button>
+
+                <p>
+                    Already have an account?
+                </p>
+                <a href="login.html" class="plain-text-link">Login Here</a>
+            </center>
         </div>
-        <p>
-            Already have an account?
-        </p>
-        <a href="login.html" class="plain-text-link">Login Here</a>
     </div>
 </body>
