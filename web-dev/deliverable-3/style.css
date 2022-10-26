@@ -55,12 +55,6 @@ body {
     color: red;
 }
 
-label {
-
-    color: rgb(255, 146, 146);
-
-}
-
 td {
     color: white;
 }
@@ -190,6 +184,7 @@ header div {
 label {
     margin-bottom: 10px;
     display: block;
+    color: rgb(255, 146, 146);
 }
 
 

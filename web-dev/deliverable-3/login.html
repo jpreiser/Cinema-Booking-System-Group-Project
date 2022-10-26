@@ -35,6 +35,9 @@
                     <li id="menu-item-search">
                         <input type="text" placeholder="Search for Movies">
                     </li>
+                    <li id="menu-item-home" style="float: right;">
+                        <a href="logout.php">Logout</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -43,14 +46,14 @@
         <h2>Login</h2>
         <div class="login">
             <center>
-                <form id="login" method="post">
+                <form id="login" action="login.php" method="post">
                     <p>
                         <label><b>Email Address</b></label>
-                        <input type="email" id="email" placeholder="Email">
+                        <input type="email" id="email" name="email" placeholder="Email" value="<?php echo $email;?>">
                     </p>
                     <p>
                         <label><b>Password</b></label>
-                        <input type="password" id="pwd" placeholder="Password">
+                        <input type="password" id="pwd" name="pwd" placeholder="Password">
                     </p>
                     <input type="submit" value="Submit">
                 </form>
