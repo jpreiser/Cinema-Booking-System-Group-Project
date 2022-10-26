@@ -12,6 +12,14 @@ body {
     background-color: #101010;
 }
 
+.container {
+
+    background-color:rgb(58, 58, 58);
+    padding: 15px 20px 15px 20px;
+    border-radius: 3px;
+    margin: 10px;
+}
+
 .topnav {
     overflow: hidden;
 }
@@ -35,6 +43,16 @@ body {
     margin-top: 8px;
     margin-right: 16px;
     border: none;
+}
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 15px;
+    background-color: #333;
+    color: red;
 }
 
 label {
@@ -132,16 +150,6 @@ p {
     color: white;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-size: 15px;
-    background-color: #333;
-    color: red;
-}
-
 section {
     margin-left: 45px;
     margin-right: 45px;
@@ -178,13 +186,6 @@ header div {
     padding: 0 16px;
 }
 
-.container {
-
-    background-color:rgb(58, 58, 58);
-    padding: 15px 20px 15px 20px;
-    border-radius: 3px;
-    margin: 10px;
-}
 
 label {
     margin-bottom: 10px;
@@ -217,4 +218,27 @@ span.price {
 
 .register input {
     display: table-cell;
+}
+
+.options-bar {
+    
+    margin: 0 auto;
+    /*
+    padding-left: 30px;
+    padding-right: 30px;
+    */
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    
+}
+
+.options-bar li {    
+    margin: 0 10px;
+    
+}
+
+.options-bar ul {
+    display: inline-block;
+    text-align: left;
 }
