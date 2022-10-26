@@ -46,32 +46,32 @@
         </center>
         <div class="register">
             <center>
-                <form>
+                <form id="register" method="post">
                     <p>
                         <label><b>*Email Address</b></label>
-                        <input type="text" placeholder="Email">
+                        <input type="email" id="email" placeholder="Email" required>
                     </p>
                     <p>
                         <label><b>*Password</b></label>
-                        <input type="text" placeholder="Password">
+                        <input type="password" id="pwd" placeholder="Password" required>
                     </p>
                     <p>
                         <label><b>*Confirm Password</b></label>
-                        <input type="text" placeholder="Confirm Password">
+                        <input type="password" id="conf-pwd" placeholder="Confirm Password" required>
                     </p>
                     <p>
                         <label><b>*Name</b></label>
-                        <input type="text" placeholder="First Name">
+                        <input type="text" id="fname" placeholder="First Name" required>
 
-                        <input type="text" placeholder="Last Name">
+                        <input type="text" id="lname" placeholder="Last Name" required>
                     </p>
                     <p>
                         <label><b>*Date of Birth</b></label>
-                        <input type="date">
+                        <input type="date" id="dob" required>
                     </p>
                     <p>
                         <label><b>Credit or Debit Card Number</b></label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="" />
+                        <input type="text" id="ccnum" name="ccnum" placeholder="" />
                     </p>
                     <p>
                         <label><b>Expiration Date</b></label>
@@ -108,12 +108,14 @@
                     </p>
 
                     <p>
-                        <input type="checkbox" id="promos" value="promos">
+                        <input type="checkbox" id="promos" name="promos">
                         I would like to receive emails about promotions
                     </p>
+                    <input type="submit" value="Submit">
                 </form>
+                <!--
                 <button><a href="reg-confirm.html" style="color: #101010;">Submit</a></button>
-
+-->
                 <p>
                     Already have an account?
                 </p>
