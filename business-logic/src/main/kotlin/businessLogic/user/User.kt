@@ -3,13 +3,19 @@ package businessLogic.user
 import businessLogic.management.Booking
 import businessLogic.user.CardInfo
 
-open class User protected constructor(public val userName: String) {
-    val passWord: String = "" // figure out implementation
-    var loginStatus: Int = 0
+open class User() {
+    var userName: String? = null
+    // var passWord: String = "" // figure out implementation
+    var loginStatus: Boolean? = null
     var firstName: String = ""
     var lastName: String = ""
     val name: String get() = "$firstName $lastName"
+    var userType: UserType? = null
 
+    constructor(_user: String): this(){
+        userName = _user
+
+    }
     fun changePassword(){} // implement
     fun changeUserName(){} // implement
     fun editInfo(){} // implement
@@ -25,4 +31,8 @@ class Customer(user: String) : User(user){
 
 enum class AccountStatus{
     ACTIVE, INACTIVE, SUSPENDED
+}
+
+enum class UserType{
+    CUSTOMER, ADMIN
 }
