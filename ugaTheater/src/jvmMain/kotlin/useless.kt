@@ -1,4 +1,4 @@
-import kotlinx.serialization.Serializable
+/*import kotlinx.serialization.Serializable
 import java.time.YearMonth
 
 @kotlinx.serialization.Serializable
@@ -36,5 +36,5 @@ class CardInfo(val number: String){
     var ccv: String? = null
     var expiration: String? = null
     var billingAddress: String? = null
-}
+}*/
 
