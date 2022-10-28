@@ -3,9 +3,10 @@ package ugatheaters
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import ugatheaters.plugins.*
+import ugatheaters.domain.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+    embeddedServer(Netty, port = 9090, host = "0.0.0.0") {
         configureSockets()
         configureSerialization()
         configureHTTP()
@@ -13,3 +14,5 @@ fun main() {
         configureRouting()
     }.start(wait = true)
 }
+
+var currentUsers = mutableListOf<User>()
