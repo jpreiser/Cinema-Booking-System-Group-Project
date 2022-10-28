@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <header id="header" role="banner">
+        <div id="header-left">
+            <h1 href="index.html" title="UGA Theaters">UGA Theaters</h1>
+
+        </div>
+    </header>
+
+    <div id="navbar-1-wrap">
+        <nav id="navbar-1" class="topnav" role="navigation">
+            <div id="navbar-1-left">
+                <ul id="nav-1" class="nav-1">
+                    <li id="menu-item-home">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li id="menu-item-showtimes">
+                        <a href="movies.html">Now Playing</a>
+                    </li>
+                    <li id="menu-item-login">
+                        <a href="login.html">Login</a>
+                    </li>
+                    <li id="menu-item-profile">
+                        <a href="profile.html">Profile</a>
+                    </li>
+                    <li id="menu-item-search">
+                        <input type="text" placeholder="Search for Movies">
+                    </li>
+                    <li id="menu-item-home" style="float: right;">
+                        <a href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h2>Create an Account</h2>
+        <center>
+            <h4>*Required Fields</h4>
+        </center>
+        <div class="register">
+            <center>
+                <form id="register" method="post">
+                    <p>
+                        <label><b>*Email Address</b></label>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </p>
+                    <p>
+                        <label><b>*Password</b></label>
+                        <input type="password" id="pwd" placeholder="Password" required>
+                    </p>
+                    <p>
+                        <label><b>*Confirm Password</b></label>
+                        <input type="password" id="conf-pwd" placeholder="Confirm Password" required>
+                    </p>
+                    <p>
+                        <label><b>*Name</b></label>
+                        <input type="text" id="fname" placeholder="First Name" required>
+
+                        <input type="text" id="lname" placeholder="Last Name" required>
+                    </p>
+                    <p>
+                        <label><b>*Date of Birth</b></label>
+                        <input type="date" id="dob" required>
+                    </p>
+                    <p>
+                        <label><b>Credit or Debit Card Number</b></label>
+                        <input type="text" id="ccnum" name="ccnum" placeholder="" />
+                    </p>
+                    <p>
+                        <label><b>Expiration Date</b></label>
+                        <select name="month" id="month">
+                            <option value='1'>Jan</option>
+                            <option value='2'>Feb</option>
+                            <option value='3'>Mar</option>
+                            <option value='4'>Apr</option>
+                            <option value='5'>May</option>
+                            <option value='6'>Jun</option>
+                            <option value='7'>Jul</option>
+                            <option value='8'>Aug</option>
+                            <option value='9'>Sep</option>
+                            <option value='10'>Oct</option>
+                            <option value='11'>Nov</option>
+                            <option value='12'>Dec</option>
+                        </select>
+                        <select name="year" id="year">
+                            <option value='1'>2022</option>
+                            <option value='2'>2023</option>
+                            <option value='3'>2024</option>
+                            <option value='4'>2025</option>
+                            <option value='5'>2026</option>
+                            <option value='6'>2027</option>
+                            <option value='7'>2028</option>
+                            <option value='8'>2029</option>
+                            <option value='9'>2030</option>
+                            <option value='10'>2031</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label><b>Security Code</b></label>
+                        <input type="text" id="cvc" name="cvc" placeholder="" />
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="promos" name="promos">
+                        I would like to receive emails about promotions
+                    </p>
+                    <input type="submit" value="Submit">
+                </form>
+                <!--
+                <button><a href="reg-confirm.html" style="color: #101010;">Submit</a></button>
+-->
+                <p>
+                    Already have an account?
+                </p>
+                <a href="login.html" class="plain-text-link">Login Here</a>
+            </center>
+        </div>
+    </div>
+</body>
