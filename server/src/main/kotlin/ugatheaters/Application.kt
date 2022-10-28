@@ -2,10 +2,12 @@ package ugatheaters
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.application.*
 import ugatheaters.plugins.*
 import ugatheaters.domain.*
+import ugatheaters.routes.*
 
-fun main() {
+/*fun main() {
     embeddedServer(Netty, port = 9090, host = "0.0.0.0") {
         configureSockets()
         configureSerialization()
@@ -13,6 +15,11 @@ fun main() {
         configureSecurity()
         configureRouting()
     }.start(wait = true)
-}
+}*/
 
-var currentUsers = mutableListOf<User>()
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+
+fun Application.module() {
+    configureRouting()
+    configureSerialization()
+}
