@@ -9,11 +9,11 @@ import io.ktor.server.routing.*
 
 fun Application.configureSecurity() {
     
-    authentication {
-    		basic(name = "myauth1") {
-    			realm = "Ktor Server"
+    /*authentication {
+    		basic("auth-basic") {
+    			realm = "Access to the '/' path"
     			validate { credentials ->
-    				if (credentials.name == credentials.password) {
+    				if (credentials.name == "jj" && credentials.password == "0000") {
     					UserIdPrincipal(credentials.name)
     				} else {
     					null
@@ -43,5 +43,18 @@ fun Application.configureSecurity() {
                 call.respondText("Hello ${principal.name}")
             }
         }
-    }
+    }*/
+	install(Authentication){
+		form("auth-form"){
+			userParamName = "username"
+			passwordParamName = "password"
+			validate { credentials ->
+				if (credentials.name == "jetbrains" && credentials.password == "foobar") {
+					UserIdPrincipal(credentials.name)
+				} else {
+					null
+				}
+			}
+		}
+	}
 }

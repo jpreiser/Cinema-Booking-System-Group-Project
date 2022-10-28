@@ -8,14 +8,14 @@ import io.ktor.server.response.*
 import io.ktor.server.request.*
 import ugatheaters.routes.*
 import ugatheaters.domain.*
+import java.io.File
 
 fun Route.staticRouting() {
     route("/") {
         static {
+            staticRootFolder = File("files")
             resources("files")
-        }
-        get{
-            call.respondRedirect("/index.html", permanent = true)
+            default("index.html")
         }
     }
 }
