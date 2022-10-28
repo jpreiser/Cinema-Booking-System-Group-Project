@@ -13,13 +13,33 @@ fun Route.userRouting() {
             if (currentUsers.isNotEmpty()) {
                 call.respond(currentUsers)
             } else {
-                call.respondText("No users found", status = HttpStatusCode.OK)
+                call.respondText("No customers found", status = HttpStatusCode.OK)
             }
+        }
+        get("{userName?}") {
+            val userName = call.parameters["userName"] ?: return@get call.respondText(
+                "Missing user id",
+                status = HttpStatusCode.BadRequest
+            )
+            val customer =
+                currentUsers.find { it.userName == userName } ?: return@get call.respondText(
+                    "No user with userName $userName",
+                    status = HttpStatusCode.NotFound
+                )
+            call.respond(customer)
         }
         post {
             val user = call.receive<User>()
             currentUsers.add(user)
-            call.respondText("Customer stored correctly", status = HttpStatusCode.Created)
+            call.respondText("User stored correctly", status = HttpStatusCode.Created)
+        }
+        delete("{userName?}") {
+            val userName = call.parameters["userName"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
+            if (currentUsers.removeIf { it.userName == userName }) {
+                call.respondText("Customer removed correctly", status = HttpStatusCode.Accepted)
+            } else {
+                call.respondText("Not Found", status = HttpStatusCode.NotFound)
+            }
         }
     }
 }
