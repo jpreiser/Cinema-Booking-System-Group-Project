@@ -11,21 +11,23 @@
                 <li id="menu-item-login">
                     <a href="index.php">Login</a>
                 </li>
-                <?php if (isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
-                    <li id="menu-item-profile" style="float: right;">
-                        <a href="profile.php">Profile</a>
-                    <?php  } ?>
+                <li id="menu-item-profile" style="float: right;">
+                    <a href="profile.php">Profile</a>
                 <li id="menu-item-admin">
                     <a href="admin.php">Admin</a>
                 </li>
                 <li id="menu-item-search">
                     <input type="text" placeholder="Search for Movies">
                 </li>
-                <?php if (isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
-                    <li id="menu-item-logout" style="float: right;">
-                        <a href="logout.php">Logout</a>
-                    <?php  } ?>
-                    </li>
+                <li id="menu-item-logout" style="float: right;">
+                    <a href="logout.php">Logout</a>
+                </li>
+
+                <li id="menu-item-logout" style="float: right;">
+                    <a href="logout.php">Logout</a>
+
+                </li>
+                -->
             </ul>
         </div>
     </nav>
