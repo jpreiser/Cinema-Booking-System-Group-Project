@@ -22,12 +22,9 @@
                 <li id="menu-item-logout" style="float: right;">
                     <a href="logout.php">Logout</a>
                 </li>
-
                 <li id="menu-item-logout" style="float: right;">
                     <a href="logout.php">Logout</a>
-
                 </li>
-                -->
             </ul>
         </div>
     </nav>
