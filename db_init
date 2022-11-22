@@ -16,24 +16,6 @@ SET @OLD_SQL_MODE = @@SQL_MODE,
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `CEBS_db` DEFAULT CHARACTER SET utf8;
 USE `CEBS_db`;
--- -----------------------------------------------------
--- Table `CEBS_db`.`AccountStatus`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CEBS_db`.`AccountStatus` (
-  `status_id` INT NOT NULL COMMENT 'The id types for the three kinds of account statuses. 0 for active, 1 for inactive, 2 for deleted\n',
-  `status_name` VARCHAR(45) NULL COMMENT 'The names for the kinds of account types. ',
-  PRIMARY KEY (`status_id`),
-  UNIQUE INDEX `status_id_UNIQUE` (`status_id` ASC)
-) ENGINE = InnoDB;
--- -----------------------------------------------------
--- Table `CEBS_db`.`User Types`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CEBS_db`.`User Types` (
-  `type_id` INT NOT NULL COMMENT 'The id for the two kinds of users.',
-  `type` VARCHAR(8) NOT NULL COMMENT 'The string representation of the user type, customer or admin.\n',
-  PRIMARY KEY (`type_id`),
-  UNIQUE INDEX `type_id_UNIQUE` (`type_id` ASC)
-) ENGINE = InnoDB;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
@@ -47,8 +29,7 @@ CREATE TABLE IF NOT EXISTS `CEBS_db`.`User` (
   `password` VARCHAR(45) NOT NULL,
   `account_type` INT NOT NULL COMMENT 'The type of account, referencing the User Types table. ',
   PRIMARY KEY (`user_id`),
-  INDEX `type_id_idx` (`account_type` ASC),
-  CONSTRAINT `type_id` FOREIGN KEY (`account_type`) REFERENCES `CEBS_db`.`User Types` (`type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  INDEX `type_id_idx` (`account_type` ASC)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `CEBS_db`.`Customers`
@@ -64,9 +45,7 @@ CREATE TABLE IF NOT EXISTS `CEBS_db`.`Customers` (
   PRIMARY KEY (`customer_id`),
   INDEX `account_status_idx` (`status` ASC),
   INDEX `user_idx` (`user_id` ASC),
-  UNIQUE INDEX `customer_id_UNIQUE` (`customer_id` ASC),
-  CONSTRAINT `account_status` FOREIGN KEY (`status`) REFERENCES `CEBS_db`.`AccountStatus` (`status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `userid` FOREIGN KEY (`user_id`) REFERENCES `CEBS_db`.`User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  UNIQUE INDEX `customer_id_UNIQUE` (`customer_id` ASC)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `CEBS_db`.`Credit Cards`
@@ -80,8 +59,7 @@ CREATE TABLE IF NOT EXISTS `CEBS_db`.`Credit Cards` (
   `customer_id` INT NOT NULL COMMENT 'The customer this card is associated with.',
   PRIMARY KEY (`card_id`),
   INDEX `customer_id_idx` (`customer_id` ASC),
-  UNIQUE INDEX `card_id_UNIQUE` (`card_id` ASC),
-  CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `CEBS_db`.`Customers` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  UNIQUE INDEX `card_id_UNIQUE` (`card_id` ASC)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `CEBS_db`.`Movie Categories`

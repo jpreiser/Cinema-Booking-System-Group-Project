@@ -17,7 +17,7 @@ if ($num_rows) {
     $address = $_POST['address'];
 
     if(mysqli_query($db,"INSERT INTO User(username, password,account_type)VALUES('$email', '$pwd','1')") 
-    && mysqli_query($db, "INSERT INTO Customers(first_name, last_name, email,num_cards,ccnum,cvc,address)VALUES('$fname', '$lname', '$email','1','$ccnum','$cvc','$address')")) {
+    && mysqli_query($db, "INSERT INTO Customers(first_name, last_name, email)VALUES('$fname', '$lname', '$email')")) {
         $_SESSION['login_user'] = $email;
         header("location: register-conf.php");
     } else {
