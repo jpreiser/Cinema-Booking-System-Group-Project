@@ -16,7 +16,8 @@ if ($num_rows) {
     //$cvc = $_POST['cvc'];
     //$address = $_POST['address'];
 
-    if(mysqli_query($db,"INSERT INTO User(username, password, account_type)VALUES('$email', '$pwd','0')") 
+    // currently set to '1' to allow creation of singular admin user
+    if(mysqli_query($db,"INSERT INTO User(username, password, account_type)VALUES('$email', '$pwd','1')") 
     && mysqli_query($db, "INSERT INTO Customers(first_name, last_name, email)VALUES('$fname', '$lname', '$email')")) {
         $_SESSION['login_user'] = $email;
         header("location: register-conf.php");
