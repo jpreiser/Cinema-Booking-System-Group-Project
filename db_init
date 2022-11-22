@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `CEBS_db`.`User` (
   `login_status` TINYINT NOT NULL COMMENT 'Whether or not the user is signed in.',
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `account_type` INT NOT NULL COMMENT 'The type of account, referencing the User Types table. ',
+  `account_type` TINYINT NOT NULL COMMENT 'The type of account, referencing the User Types table. ',
   PRIMARY KEY (`user_id`),
   INDEX `type_id_idx` (`account_type` ASC)
 ) ENGINE = InnoDB;

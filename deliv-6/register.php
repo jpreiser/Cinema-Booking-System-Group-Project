@@ -26,9 +26,6 @@
         </div>
     </header>
 
-    <?php
-    include "navbar.php";
-    ?>
     <div class="container">
         <h2> <?php
                 $remarks = isset($_GET['remarks']) ? $_GET['remarks'] : '';

@@ -24,9 +24,15 @@
                 <?php
                 }
                 ?>
-                <li id="menu-item-admin">
+                <?php if (isset($_SESSION['TYPE']) && !empty($_SESSION['TYPE'])) {
+                    if($_SESSION['TYPE'] == 'admin'){
+                ?>
+                      <li id="menu-item-admin">
                     <a href="admin.php">Admin</a>
                 </li>
+                <?php
+                }}
+                ?>
                 <li id="menu-item-search">
                     <input type="text" placeholder="Search for Movies">
                 </li>

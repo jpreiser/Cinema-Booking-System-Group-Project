@@ -17,6 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($count == 1) {
         $_SESSION['login_user'] = $email;
         $logged_in = "UPDATE User SET login_status='1' WHERE username='$email'";
+        $_SESSION['TYPE'] = 'customer';
+        $account = mysqli_query($db,"SELECT account_type FROM User WHERE username='$email'");
+        $account = $account->fetch_array();
+        $account_type = intval($account[0]);
+        if($account_type == 1){
+            $_SESSION['TYPE'] = 'admin';
+        }else{
+            $_SESSION['TYPE'] = 'customer';
+        }
         
         header("location: profile.php");
     }

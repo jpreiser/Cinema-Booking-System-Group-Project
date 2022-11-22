@@ -18,9 +18,6 @@
         </div>
     </header>
 
-    <?php
-    include "navbar.php";
-    ?>
     <div class="container">
         <h2> <?php
                 $remarks = isset($_GET['remark_login']) ? $_GET['remark_login'] : '';

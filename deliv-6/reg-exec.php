@@ -13,10 +13,11 @@ if ($num_rows) {
     $lname = $_POST['lname'];
     $ccnum = $_POST['ccnum'];
     //$expdate = $_POST['exp-date'];
-    $cvc = $_POST['cvc'];
-    $address = $_POST['address'];
+    //$cvc = $_POST['cvc'];
+    //$address = $_POST['address'];
+    $user_id = crc32($email);
 
-    if(mysqli_query($db,"INSERT INTO User(username, password,account_type)VALUES('$email', '$pwd','1')") 
+    if(mysqli_query($db,"INSERT INTO User(username, password, account_type, user_id)VALUES('$email', '$pwd','0', '$user_id')") 
     && mysqli_query($db, "INSERT INTO Customers(first_name, last_name, email)VALUES('$fname', '$lname', '$email')")) {
         $_SESSION['login_user'] = $email;
         header("location: register-conf.php");
