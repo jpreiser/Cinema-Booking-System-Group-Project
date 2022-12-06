@@ -1,6 +1,6 @@
-# cs4730_project
+# cs4050_project
 
-Cinema e-booking System for cs4730 @uga. 
+Cinema e-booking System for cs4050 @uga. 
 
 Brett
 Jacob
