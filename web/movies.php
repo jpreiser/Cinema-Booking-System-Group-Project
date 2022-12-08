@@ -34,6 +34,7 @@
                     </li>
                     <li id="menu-item-search">
                         <input type="text" placeholder="Search for Movies">
+			<a href="search.php">Search</a>
                     </li>
                     <li id="menu-item-home" style="float: right;">
                         <a href="logout.php">Logout</a>
