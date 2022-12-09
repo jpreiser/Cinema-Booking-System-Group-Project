@@ -11,10 +11,10 @@ if (isset($_POST['submit'])) {
     $synopsis = $_POST['synopsis'];
     $rating = $_POST['rating'];
 
-    $sql = "INSERT INTO movies VALUES ('6', '$title', '$cast', '$director','$synopsis', '$trailer', '$genre', '$rating')";
+    $sql = "INSERT INTO movies(title, cast_members, director, Synopsis, trailerLink, category, rating) VALUES ('$title', '$cast', '$director','$synopsis', '$trailer', '$genre', '$rating')";
 
     if (mysqli_query($db, $sql)) {
-        echo "<h3>added successfully</h3>";
+        header('location:admin.php');
     } else {
         echo mysqli_error($db);
     }

@@ -9,7 +9,7 @@ if (isset($_POST['delete'])) {
     $id = $_POST["id_$del_id"];
     
     
-    $del = "DELETE FROM movies WHERE movie_id = '$id'";
+    $del = "DELETE FROM promotions WHERE promotion_id = '$id'";
     $result = mysqli_query($db,$del);
     if ($result) {
         header('location:admin.php');   

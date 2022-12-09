@@ -80,7 +80,7 @@ session_start();
                         <button onclick="showAdd()">Add Movie</button>
                     </li>
                     <li id="add-showtime-option">
-                        <button onclick="showAddTime()">Add Showtime</button>
+                        <button onclick="showAddTime()">Add Showing</button>
                     </li>
                     <li id="delete-movie-option">
                         <button onclick="showDelete()">Delete Movie</button>
@@ -174,7 +174,7 @@ session_start();
                     </tr>
                     <tr>
                         <td align="center">
-                            <input type="submit" value="Add Movie">
+                            <input type="submit" name="submit" value="Add Movie">
                         </td>
                     </tr>
             </form>
@@ -183,57 +183,84 @@ session_start();
     </div>
     <div id="add-showtime" class="container" style="display:none">
         <center>
-            <h3>Add Showtime</h3>
-            <table class="movie-table" style="margin-bottom: 30px;">
-                <tr>
-                    <td align="center">
-                        <select name="title">
-                            <option value="default">Select a movie</option>
-                            <option value="fletch">Confess, Fletch</option>
-                            <option value="dont-worry-darling">Don't Worry Darling</option>
-                            <option value="nope">Nope</option>
-                            <option value="pearl">Pearl</option>
-                            <option value="woman-king">The Woman King</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="datetime-local" name="date-time">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="submit" value="Add Time">
-                    </td>
-                </tr>
-            </table>
+            <h3>Add Showing</h3>
+            <form id="add-showtime" action="add-showtime.php" method="post">
+                <table class="movie-table" style="margin-bottom: 30px;">
+                    <tr>
+                        <td align="center">
+                            <select name="title">
+                                <option value="default">Select a movie</option>
+                                <?php
+                                $movie_select = "SELECT title FROM movies";
+                                $movie_sql = mysqli_query($db, $movie_select);
+                                while ($row = mysqli_fetch_assoc($movie_sql)) { ?>
+                                    <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            Showroom: <input type="text" name="room">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            Time: <input type="datetime-local" name="showtime">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input type="submit" name="submit" value="Add Time">
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </center>
     </div>
     <div id="delete-movie" class="container" style="display:none">
         <center>
             <h3>Delete Movie</h3>
             <form id="delete-movie" action="delete-movie.php" method="post">
-            <table class="movie-table">
-                <tr>
-                    <td align="center">
-                        <select name="title">
-                            
-                            <?php
-                            $movie_select = "SELECT title FROM movies";
-                            $movie_sql = mysqli_query($db, $movie_select);
-                            while ($row = mysqli_fetch_assoc($movie_sql)) { ?>
-                                <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="submit" value="Delete Entry" name="submit">
-                    </td>
-                </tr>
-            </table>
+                <?php
+                $sql = "SELECT * FROM movies";
+                $res = mysqli_query($db, $sql);
+                ?>
+                <table class="movie-table">
+                    <?php
+                    if (mysqli_num_rows($res) > 0) {
+                        $i = 0;
+                        while ($row = mysqli_fetch_assoc($res)) { ?>
+                            <tr>
+                                <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['movie_id'] ?>"></td>
+                                <td> <input type="text" name="title" value="<?php echo $row['title'] ?>"></td>
+                                <td> <input type="submit" name="delete[<?= $i ?>]" value="Delete"></td>
+                            </tr>
+                    <?php
+                            $i++;
+                        }
+                    }
+                    ?>
+                    <!--
+                    <tr>
+                        Enter a title: <br>
+                        <td align="center">
+                        <input type="text" name="title"></td>
+                    
+                            <select name="title">
+                                
+                                
+                            </select>
+                                
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input type="submit" name="submit" value="Delete Entry">
+                        </td>
+                    </tr>
+                    -->
+                </table>
             </form>
         </center>
     </div>
@@ -319,97 +346,96 @@ session_start();
         <center>
             <h3>Manage Promotions</h3>
             <div id="add-promo">
-                <table>
-                    <tr>
-                        <h4>Add a Promotion</h4>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Promo Code: <input type="text" name="code">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Discount: <input type="text" name="discount">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Start Date: <input type="date" name="start-date">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Expiration Date: <input type="date" name="exp-date">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <input type="submit" value="Add">
-                        </td>
-                    </tr>
-                </table>
+                <form id="add-promo" action="add-promo.php" method="post">
+                    <table>
+                        <tr>
+                            <h4>Add a Promotion</h4>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                Promo Code: <input type="text" name="code">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                Discount: <input type="text" name="discount">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                Start Date: <input type="date" name="start-date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                End Date: <input type="date" name="end-date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <input type="submit" name="submit" value="Add">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
             <div id="edit-promo">
                 <table>
                     <tr>
                         <h4>Edit a Promotion</h4>
                     </tr>
-                    <tr>
-                        <td align="center">
-                            <select name="promo">
-                                <option value="default">Select a promotion</option>
-                                <option value="promo1">promo1</option>
-                                <option value="promo2">promo2</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Promo Code: <input type="text" name="code">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Discount: <input type="text" name="discount">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Start Date: <input type="date" name="start-date">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Expiration Date: <input type="date" name="exp-date">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <input type="submit" value="Update">
-                        </td>
-                    </tr>
+                    <form id="edit-promo" action="edit-promo.php" method="post">
+                            <?php
+                            $sql = "SELECT * FROM promotions";
+                            $res = mysqli_query($db, $sql);
+                            ?>
+                            <table class="movie-table">
+                                <?php
+                                if (mysqli_num_rows($res) > 0) {
+                                    $i = 0;
+                                    while ($row = mysqli_fetch_assoc($res)) { ?>
+                                        <tr>
+                                            <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['promotion_id'] ?>"></td>
+                                            <td> <input type="text" name="code" value="<?php echo $row['code'] ?>"></td>
+                                            <td> <input type="text" name="start" value="<?php echo $row['start_date'] ?>"></td>
+                                            <td> <input type="text" name="end" value="<?php echo $row['end_date'] ?>"></td>
+                                            <td> <input type="submit" name="update[<?= $i ?>]" value="Update"></td>
+                                        </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
+                            </table>
+                        </form>
                 </table>
                 <div id="add-promo">
                     <table>
                         <tr>
                             <h4>Archive a Promotion</h4>
                         </tr>
-                        <tr>
-                            <td align="center">
-                                <select name="promo">
-                                    <option value="default">Select a promotion</option>
-                                    <option value="promo1">promo1</option>
-                                    <option value="promo2">promo2</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <input type="submit" value="Archive">
-                            </td>
-                        </tr>
-                    </table>
+                        <form id="delete-promo" action="delete-promo.php" method="post">
+                            <?php
+                            $sql = "SELECT * FROM promotions";
+                            $res = mysqli_query($db, $sql);
+                            ?>
+                            <table class="movie-table">
+                                <?php
+                                if (mysqli_num_rows($res) > 0) {
+                                    $i = 0;
+                                    while ($row = mysqli_fetch_assoc($res)) { ?>
+                                        <tr>
+                                            <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['promotion_id'] ?>"></td>
+                                            <td> <input type="text" name="code" value="<?php echo $row['code'] ?>"></td>
+                                            <td> <input type="submit" name="delete[<?= $i ?>]" value="Delete"></td>
+                                        </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
+                            </table>
+                        </form>
                 </div>
             </div>
         </center>
@@ -418,35 +444,34 @@ session_start();
         <center>
             <h3>Manage Users</h3>
             <form id="manage-user" action="manage-user.php" method="post">
-            <table class="user-table">
-                <tr>
-                    <td align="center">
-                        <select name="user-id">
-                            <option value="default">Select a User</option>
-                            <?php
-                            $sql = mysqli_query($db, "SELECT username FROM user");
-                            while ($row = mysqli_fetch_assoc($sql)){?>
-                            <option value="<?php echo $row['username']; ?>"><?php echo $row['username']; ?></option>
-                            <?php }?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <select name="Status">
-                            <option value="default">User Status</option>
-                            <option value="status0" name="active">Active</option>
-                            <option value="status1" name="inactive">Inactive</option>
-                            <option value="status2" name="active">Deleted</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="submit" value="Submit Changes">
-                    </td>
-                </tr>
-            </table>
+                <table class="user-table">
+                    <tr>
+                        <td align="center">
+                            <select name="user-id">
+                                <option value="default">Select a User</option>
+                                <?php
+                                $sql = mysqli_query($db, "SELECT username FROM user");
+                                while ($row = mysqli_fetch_assoc($sql)) { ?>
+                                    <option value="<?php echo $row['username']; ?>"><?php echo $row['username']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <select name="Status">
+                                <option value="default">User Status</option>
+                                <option value="status0" name="active">Active</option>
+                                <option value="status1" name="inactive">Inactive</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input type="submit" value="Submit Changes">
+                        </td>
+                    </tr>
+                </table>
             </form>
         </center>
     </div>
