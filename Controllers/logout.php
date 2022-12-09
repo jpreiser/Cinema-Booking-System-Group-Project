@@ -2,7 +2,7 @@
 include('session.php');
 session_start();
 
-$logged_in = "UPDATE User SET login_status='0' WHERE username='$loggedin_session'";
+$logged_in = "UPDATE User SET login_status='0' WHERE username='$_SESSION[login_user]'";
 $result = mysqli_query($db,$logged_in);
     if($result) {
 

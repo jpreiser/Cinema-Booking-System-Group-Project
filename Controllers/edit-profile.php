@@ -25,7 +25,7 @@ include('session.php');
     ?>
     <div id="container" class="container">
         <?php
-        $sql = "SELECT * FROM Customers, Credit_Cards WHERE customers.customer_id = credit_cards.customer_id AND customers.customer_id=$loggedin_id";
+        $sql = "SELECT * FROM Customers, Credit_Cards WHERE Customers.customer_id='$_SESSION[login_user]' AND Customers.customer_id=credit_cards.customer_id";
         $result = mysqli_query($db, $sql);
         ?>
         <?php
