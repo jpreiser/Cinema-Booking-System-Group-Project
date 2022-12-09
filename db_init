@@ -18,26 +18,17 @@ USE `CEBS_db` ;
 
 
 CREATE TABLE IF NOT EXISTS `CEBS_db`.`User` (
-  `user_id` INT NOT NULL COMMENT 'The id of the user for use within the system. ',
+  `user_id` INT AUTO_INCREMENT COMMENT 'The id of the user for use within the system. ',
   `login_status` TINYINT NOT NULL COMMENT 'Whether or not the user is signed in.',
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `account_type` INT NOT NULL COMMENT 'The type of account, referencing the User Types table. ',
+  `account_type` INT NOT NULL,
+  `account_status` INT NOT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `CEBS_db`.`account_status`
--- -----------------------------------------------------
-
-
-CREATE TABLE IF NOT EXISTS `CEBS_db`.`account_status` (
-  `status_id` INT NOT NULL COMMENT 'The id types for the three kinds of account statuses. 0 for active, 1 for inactive, 2 for deleted\n',
-  `status_name` VARCHAR(45) NULL COMMENT 'The names for the kinds of account types. ',
-  PRIMARY KEY (`status_id`),
-  UNIQUE INDEX `status_id_UNIQUE` (`status_id` ASC)  )
-ENGINE = InnoDB;
+INSERT INTO User (login_status, username, password, account_type, account_status)
+  VALUES (0, 'user1', 'password', 0, 1);
 
 
 -- -----------------------------------------------------
@@ -50,18 +41,13 @@ CREATE TABLE IF NOT EXISTS `CEBS_db`.`Customers` (
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
-  `status` INT NOT NULL COMMENT 'The status of the customer\'s account',
+  `account_status` INT NOT NULL COMMENT 'The status of the customer\'s account',
   `user_id` INT NOT NULL COMMENT 'The user associated with this customer account.',
   `num_cards` INT NOT NULL COMMENT 'The number of credit cards associated with this customer, max of 3.',
   PRIMARY KEY (`customer_id`),
-  INDEX `account_status_idx` (`status` ASC)  ,
+  INDEX `account_status_idx` (`account_status` ASC)  ,
   INDEX `user_idx` (`user_id` ASC)  ,
   UNIQUE INDEX `customer_id_UNIQUE` (`customer_id` ASC)  ,
-  CONSTRAINT `account_status`
-    FOREIGN KEY (`status`)
-    REFERENCES `CEBS_db`.`account_status` (`status_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `userid`
     FOREIGN KEY (`user_id`)
     REFERENCES `CEBS_db`.`User` (`user_id`)
