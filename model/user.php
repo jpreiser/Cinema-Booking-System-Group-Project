@@ -22,4 +22,8 @@ class User
         $this->account_type = $type;
     }
 }
+
+// very basic not meant to function yet. should probably include login / register function and customer class here
+// gotta figure out how to incorporate this with login / registration primarily, after that abstracting other user functions should be straightforward
+// (god willing)
 ?>
