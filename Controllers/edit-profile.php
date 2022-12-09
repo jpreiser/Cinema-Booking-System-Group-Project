@@ -25,11 +25,14 @@ include('session.php');
     ?>
     <div id="container" class="container">
         <?php
-        $sql = "SELECT * FROM Customers, Credit_Cards WHERE Customers.customer_id='$_SESSION[login_user]' AND Customers.customer_id=credit_cards.customer_id";
-        $result = mysqli_query($db, $sql);
+         $customer_sql = "SELECT * FROM Customers WHERE customer_id='$_SESSION[login_user]'";
+         $credit_card_sql = "SELECT * FROM credit_cards WHERE customer_id=(SELECT customer_id FROM Customers WHERE customer_id='$_SESSION[login_user]')";
+         $customer_result = mysqli_query($db, $customer_sql);
+         $card_result = mysqli_query($db, $credit_card_sql);
         ?>
         <?php
-        while ($rows = mysqli_fetch_array($result)) {
+        while ($rows = mysqli_fetch_array($customer_result)) {
+            $rows2 = mysqli_fetch_array($card_result);
         ?>
             <div id="edit-profile" class="edit-profile">
                 <h2>Edit Profile</h2>
@@ -44,17 +47,32 @@ include('session.php');
                     </p>
                     <p>
                         <label for="address"><b>Address</b></label>
-                        <input type="text" id="address" name="address" value="<?php echo $rows['billingAddress']?>">
+                        <input type="text" id="address" name="address" value="<?php 
+                        if(isset($rows2['billingAddress'])){
+                            echo $rows2['billingAddress'];
+                        }else{
+                            echo "*Address*";
+                        }?>">
                     </p>
                     <p>
                         <label for="ccnum"><b>Credit or Debit Card Number</b></label>
                         
-                        <input type="text" id="ccnum" name="ccnum" value="<?php echo $rows['card_number']?>">
+                        <input type="text" id="ccnum" name="ccnum" value="<?php 
+                        if(isset($rows2['card_number'])){
+                            echo $rows2['card_number'];
+                        }else{
+                            echo "*Card Number*";
+                        }?>">
                     </p>
                     <p>
                         <label><b>Expiration Date</b></label>
                         <!--
-                        <?php echo substr($rows['expiration'], 0, 7); ?><br>
+                        <?php 
+                        if(isset($rows2['expiration'])){
+                            echo substr($rows2['expiration'], 0, 7);
+                        }else{
+                            echo "*Expiration*";
+                        }?><br>
                         -->
                         <select name="year" id="year">
                             <option value='2'>2023</option>
@@ -84,7 +102,12 @@ include('session.php');
                     </p>
                     <p>
                         <label><b>Security Code</b></label>
-                        <input type="text" id="ccv" name="ccv" value="<?php echo $rows['ccv']?>">
+                        <input type="text" id="ccv" name="ccv" value="<?php 
+                        if(isset($rows2['ccv'])){
+                            echo $rows2['ccv'];
+                        }else{
+                            echo "*ccv*";
+                        }?>">
                     </p>
                     <p>
                         <input type="checkbox" id="promos" value="promos">
@@ -100,3 +123,4 @@ include('session.php');
             </div>
     </div>
 </body>
+</html>
