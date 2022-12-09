@@ -24,11 +24,14 @@ include('session.php');
     ?>
     <div id="container" class="container">
         <?php
-        $customer_sql = "SELECT * FROM Customers, Credit_Cards WHERE customers.customer_id = credit_cards.customer_id AND customers.customer_id=$loggedin_id";
+        $customer_sql = "SELECT * FROM Customers WHERE customer_id='$_SESSION[login_user]'";
+        $credit_card_sql = "SELECT * FROM credit_cards WHERE customer_id=(SELECT customer_id FROM Customers WHERE customer_id='$_SESSION[login_user]')";
         $customer_result = mysqli_query($db, $customer_sql);
+        $card_result = mysqli_query($db, $credit_card_sql);
         ?>
         <?php
-        while ($rows = mysqli_fetch_array($customer_result)) {
+            while ($rows = mysqli_fetch_array($customer_result)) {
+                $rows2 = mysqli_fetch_array($card_result);
         ?>
 
             <form action="" method="POST" id="profile">
@@ -46,12 +49,21 @@ include('session.php');
                     <label><b>Address</b></label>
                     <p>
                         <?php
-                        echo $rows['billingAddress']; ?>
+                        if(isset($rows2['billingAddress'])){
+                            echo $rows2['billingAddress'];
+                        }else{
+                            echo "No address associated with account.";
+                        } ?>
                     </p>
                     <label><b>Saved Cards</b></label>
                     <p>
                         <?php
-                        echo 'XXXX-XXXX-XXXX-'.substr($rows['card_number'], -4); ?>
+                        if(isset($rows2['card_number'])){
+                            echo 'XXXX-XXXX-XXXX-'.substr($rows2['card_number'], -4);
+                        }
+                        else{
+                            echo 'No cards associated with this account.';
+                        } ?>
                     </p>
                 </div>
             </form>
