@@ -69,19 +69,19 @@
                     </p>
                     
                     <p>
-                        <label><b>Credit or Debit Card Number</b></label>
+                        <label><b>*Credit or Debit Card Number</b></label>
                         <input type="text" id="ccnum" name="ccnum" />
                     </p>
                     <p>
-                        <label><b>Expiration Date</b></label>
+                        <label><b>*Expiration Date</b></label>
                         <input type="text" id="exp-date" name="exp-date" />
                     </p>
                     <p>
-                        <label><b>Security Code</b></label>
+                        <label><b>*Security Code</b></label>
                         <input type="text" id="cvc" name="cvc">
                     </p>
                     <p>
-                        <label for="address"><b>Address</b></label>
+                        <label for="address"><b>*Address</b></label>
                         <input type="text" id="address" name="address">
                     </p>
                     <p>

@@ -16,7 +16,6 @@ include('session.php');
     <header id="header" role="banner">
         <div id="header-left">
             <h1 href="landing.php" title="UGA Theaters">UGA Theaters</h1>
-
         </div>
     </header>
 
@@ -25,11 +24,11 @@ include('session.php');
     ?>
     <div id="container" class="container">
         <?php
-        $sql = "SELECT * FROM Customers WHERE customer_id=$loggedin_id";
-        $result = mysqli_query($db, $sql);
+        $customer_sql = "SELECT * FROM Customers, Credit_Cards WHERE customers.customer_id = credit_cards.customer_id AND customers.customer_id=$loggedin_id";
+        $customer_result = mysqli_query($db, $customer_sql);
         ?>
         <?php
-        while ($rows = mysqli_fetch_array($result)) {
+        while ($rows = mysqli_fetch_array($customer_result)) {
         ?>
 
             <form action="" method="POST" id="profile">
@@ -47,12 +46,12 @@ include('session.php');
                     <label><b>Address</b></label>
                     <p>
                         <?php
-                        echo $rows['address']; ?>
+                        echo $rows['billingAddress']; ?>
                     </p>
                     <label><b>Saved Cards</b></label>
                     <p>
                         <?php
-                        echo $rows['ccnum']; ?>
+                        echo 'XXXX-XXXX-XXXX-'.substr($rows['card_number'], -4); ?>
                     </p>
                 </div>
             </form>
@@ -60,7 +59,7 @@ include('session.php');
         }
         ?>
         <a href="edit-profile.php" class="btn">Edit Profile</a>
-        <a href="bookings.php" class="btn" style="float: right;">Edit Bookings</a>
+        <a href="bookings.php" class="btn" style="float: right;">Purchase History</a>
 
     </div>
 </body>

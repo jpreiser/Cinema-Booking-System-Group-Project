@@ -18,6 +18,7 @@ session_start();
             else
                 x.style.display = "none";
         }
+
         function showAddTime() {
             var x = document.getElementById("add-showtime");
             if (x.style.display === 'none')
@@ -25,6 +26,7 @@ session_start();
             else
                 x.style.display = "none";
         }
+
         function showDelete() {
             var x = document.getElementById("delete-movie");
             if (x.style.display === 'none')
@@ -32,6 +34,7 @@ session_start();
             else
                 x.style.display = "none";
         }
+
         function showEdit() {
             var x = document.getElementById("edit-movie");
             if (x.style.display === 'none')
@@ -39,6 +42,7 @@ session_start();
             else
                 x.style.display = "none";
         }
+
         function showPromos() {
             var x = document.getElementById("manage-promos");
             if (x.style.display === 'none')
@@ -46,6 +50,7 @@ session_start();
             else
                 x.style.display = "none";
         }
+
         function showUsers() {
             var x = document.getElementById("manage-users");
             if (x.style.display === 'none')
@@ -71,25 +76,25 @@ session_start();
         <div id="options" class="options-bar">
             <ul id="options">
                 <center>
-                <li id="add-movie-option">
-                    <button onclick="showAdd()">Add Movie</button>
-                </li>
-                <li id="add-showtime-option">
-                    <button onclick="showAddTime()">Add Showtime</button>
-                </li>
-                <li id="delete-movie-option">
-                    <button onclick="showDelete()">Delete Movie</button>
-                </li>
-                <li id="edit-movie-option">
-                    <button onclick="showEdit()">Edit Movie</button>
-                </li>
-                <li id="manage-promos-option">
-                    <button onclick="showPromos()">Manage Promos</button>
-                </li>
-                <li id="manage-users-option">
-                    <button onclick="showUsers()">Manage Users</button>
-                </li>
-            </center>
+                    <li id="add-movie-option">
+                        <button onclick="showAdd()">Add Movie</button>
+                    </li>
+                    <li id="add-showtime-option">
+                        <button onclick="showAddTime()">Add Showtime</button>
+                    </li>
+                    <li id="delete-movie-option">
+                        <button onclick="showDelete()">Delete Movie</button>
+                    </li>
+                    <li id="edit-movie-option">
+                        <button onclick="showEdit()">Edit Movie</button>
+                    </li>
+                    <li id="manage-promos-option">
+                        <button onclick="showPromos()">Manage Promos</button>
+                    </li>
+                    <li id="manage-users-option">
+                        <button onclick="showUsers()">Manage Users</button>
+                    </li>
+                </center>
             </ul>
         </div>
     </div>
@@ -97,84 +102,82 @@ session_start();
     <div id="add-movie" class="container" style="display:none">
         <center>
             <h3>Add Movie</h3>
-            <table class="movie-table" id="add-movie-table">
-                <tr>
-                    <td class="table-content">Title:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="title"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Genre:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="genre"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Cast:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="cast"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Director:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="director"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Producer:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="producer"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Companies:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="companies"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Synopsis:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="synopsis"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Poster:</td>
-                </tr>
-                <tr>
-                    <td><button>Upload Poster</button></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Trailer:</td>
-                </tr>
-                <tr>
-                    <td><button>Upload Trailer</button></td>
-                </tr>
-                <tr>
-                    <td class="table-content">MPAA Rating:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="rating"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Release Date:</td>
-                </tr>
-                <tr>
-                    <td><input type="date" size="60" name="release-date"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Archive Date:</td>
-                </tr>
-                <tr>
-                    <td><input type="date" size="60" name="Archive-date"></td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <input type="submit" value="Add Movie">
-                    </td>
-                </tr>
+            <form id="add-movie" action="add-movie.php" method="post">
+                <table class="movie-table" id="add-movie-table">
+                    <tr>
+                        <td class="table-content">Title:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="title"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Genre:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="genre"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Cast:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="cast"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Director:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="director"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Trailer:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="trailer"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Synopsis:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="synopsis"></td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td class="table-content">Poster:</td>
+                    </tr>
+                    <tr>
+                        <td><button>Upload Poster</button></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Trailer:</td>
+                    </tr>
+                    <tr>
+                        <td><button>Upload Trailer</button></td>
+                    </tr>
+                    -->
+                    <tr>
+                        <td class="table-content">MPAA Rating:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="rating"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Release Date:</td>
+                    </tr>
+                    <tr>
+                        <td><input type="date" size="60" name="release-date"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Archive Date:</td>
+                    </tr>
+                    <tr>
+                        <td><input type="date" size="60" name="Archive-date"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input type="submit" value="Add Movie">
+                        </td>
+                    </tr>
+            </form>
             </table>
         </center>
     </div>
@@ -210,25 +213,28 @@ session_start();
     <div id="delete-movie" class="container" style="display:none">
         <center>
             <h3>Delete Movie</h3>
+            <form id="delete-movie" action="delete-movie.php" method="post">
             <table class="movie-table">
                 <tr>
                     <td align="center">
                         <select name="title">
-                            <option value="default">Select a movie</option>
-                            <option value="fletch">Confess, Fletch</option>
-                            <option value="dont-worry-darling">Don't Worry Darling</option>
-                            <option value="nope">Nope</option>
-                            <option value="pearl">Pearl</option>
-                            <option value="woman-king">The Woman King</option>
+                            
+                            <?php
+                            $movie_select = "SELECT title FROM movies";
+                            $movie_sql = mysqli_query($db, $movie_select);
+                            while ($row = mysqli_fetch_assoc($movie_sql)) { ?>
+                                <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <input type="submit" value="Delete Entry">
+                        <input type="submit" value="Delete Entry" name="submit">
                     </td>
                 </tr>
             </table>
+            </form>
         </center>
     </div>
     <div id="edit-movie" class="container" style="display:none">
@@ -238,87 +244,69 @@ session_start();
                 <tr>
                     <td align="center">
                         <select name="movie-id">
-                            <option value="default">Select a movie ID</option>
-                            <option value="fletch">000</option>
-                            <option value="dont-worry-darling">001</option>
-                            <option value="nope">002</option>
-                            <option value="pearl">003</option>
-                            <option value="woman-king">004</option>
+                            <option value="default">Select a movie</option>
+                            <?php
+                            $movie_select = "SELECT title FROM movies";
+                            $movie_sql = mysqli_query($db, $movie_select);
+                            while ($row = $movie_sql->fetch_assoc()) { ?>
+
+                                <option value="title1"><?php echo $row['title']; ?></option>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td class="table-content">Title:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="title"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Genre:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="genre"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Cast:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="cast"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Director:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="director"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Producer:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="producer"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Companies:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="companies"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Synopsis:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="synopsis"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Poster:</td>
-                </tr>
-                <tr>
-                    <td><button>Upload Poster</button></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Trailer:</td>
-                </tr>
-                <tr>
-                    <td><button>Upload Trailer</button></td>
-                </tr>
-                <tr>
-                    <td class="table-content">MPAA Rating:</td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="text" size="60" name="rating"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Release Date:</td>
-                </tr>
-                <tr>
-                    <td><input type="date" size="60" name="release-date"></td>
-                </tr>
-                <tr>
-                    <td class="table-content">Archive Date:</td>
-                </tr>
-                <tr>
-                    <td><input type="date" size="60" name="Archive-date"></td>
-                </tr>
+                <?php
+                $movie_data = "SELECT * FROM movies";
+                $data_sql = mysqli_query($db, $movie_data);
+
+                while ($data_rows = mysqli_fetch_array($data_sql)) {
+                ?>
+
+                    <tr>
+                        <td class="table-content">Title:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="title" value="<?php echo $data_rows['title'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Genre:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="genre" value="<?php echo $data_rows['category'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Cast:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="cast" value="<?php echo $data_rows['cast_members'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Director:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="director" value="<?php echo $data_rows['director'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Trailer:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="trailer" value="<?php echo $data_rows['trailerLink'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">Synopsis:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="synopsis" value="<?php echo $data_rows['Synopsis'] ?>"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-content">MPAA Rating:</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="text" size="60" name="rating" value="<?php echo $data_rows['rating'] ?>"></td>
+                    </tr>
+                <?php
+                }
+                ?>
                 <tr>
                     <td align="center">
                         <input type="submit" value="Submit Changes">
@@ -429,13 +417,17 @@ session_start();
     <div id="manage-users" class="container" style="display:none">
         <center>
             <h3>Manage Users</h3>
+            <form id="manage-user" action="manage-user.php" method="post">
             <table class="user-table">
                 <tr>
                     <td align="center">
                         <select name="user-id">
                             <option value="default">Select a User</option>
-                            <option value="user0">0000 - $Admin</option>
-                            <option value="user1">0001 - John Smith</option>
+                            <?php
+                            $sql = mysqli_query($db, "SELECT username FROM user");
+                            while ($row = mysqli_fetch_assoc($sql)){?>
+                            <option value="<?php echo $row['username']; ?>"><?php echo $row['username']; ?></option>
+                            <?php }?>
                         </select>
                     </td>
                 </tr>
@@ -443,9 +435,9 @@ session_start();
                     <td align="center">
                         <select name="Status">
                             <option value="default">User Status</option>
-                            <option value="status0">Active</option>
-                            <option value="status1">Inactive</option>
-                            <option value="status2">Removed</option>
+                            <option value="status0" name="active">Active</option>
+                            <option value="status1" name="inactive">Inactive</option>
+                            <option value="status2" name="active">Deleted</option>
                         </select>
                     </td>
                 </tr>
@@ -455,6 +447,7 @@ session_start();
                     </td>
                 </tr>
             </table>
+            </form>
         </center>
     </div>
 </body>
