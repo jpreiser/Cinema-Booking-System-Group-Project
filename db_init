@@ -135,7 +135,7 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `CEBS_db`.`Showroom` (
-  `room_id` INT NOT NULL COMMENT 'The room id for reference within the db',
+  `room_id` INT AUTO_INCREMENT COMMENT 'The room id for reference within the db',
   `open` TINYINT NOT NULL COMMENT 'A boolean determing whether or not the room is available for use. ',
   PRIMARY KEY (`room_id`),
   UNIQUE INDEX `room_id_UNIQUE` (`room_id` ASC)  )
@@ -148,7 +148,7 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `CEBS_db`.`Showing` (
-  `showing_id` INT NOT NULL COMMENT 'The id of the showing for reference within the system. ',
+  `showing_id` INT NOT NULL AUTO_INCREMENT COMMENT 'The id of the showing for reference within the system. ',
   `date` DATETIME NOT NULL,
   `time` DATETIME NOT NULL,
   `duration` DATETIME NOT NULL,
@@ -287,7 +287,7 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `CEBS_db`.`ShowTime` (
-  `showtime_id` INT NOT NULL,
+  `showtime_id` INT NOT NULL AUTO_INCREMENT,
   `showroom` INT NOT NULL,
   PRIMARY KEY (`showtime_id`),
   INDEX `showroom_id_idx` (`showroom` ASC)  ,
@@ -315,19 +315,21 @@ INSERT INTO Categories VALUES
     (NULL,'Thriller'),
     (NULL,'Western');
 
+
 INSERT INTO Showroom VALUES
-    (1.0,0.0),
-    (2.0,0.0),
-    (3.0,0.0),
-    (4.0,0.0),
-    (5.0,0.0);
+    (NULL,0.0),
+    (NULL,0.0),
+    (NULL,0.0),
+    (NULL,0.0),
+    (NULL,0.0);
+
 
 INSERT INTO Movies VALUES
-    (1.0,'Confess, Fletch','John Hamm, Caitlin Zerra Rose, Roy Wood Jr.','Greg Mottola','After becoming the prime suspect in multiple murders, Fletch strives to prove his innocence while simultaneously searching for his fiancé''s stolen art collection.','https://www.youtube.com/watch?v=pb2Pu5EjC1s&ab_channel=ParamountMovies','Comedy',6.5),
-    (2.0,'Don''t Worry Darling','Florence Pugh, Harry Styles, Chris Pine','Olivia Wilde','n the 1950s, Alice and Jack live in the idealized community of Victory, an experimental company town that houses the men who work on a top-secret project. While the husbands toil away, the wives get to enjoy the beauty, luxury and debauchery of their seemingly perfect paradise. However, when cracks in her idyllic life begin to appear, exposing flashes of something sinister lurking below the surface, Alice can''t help but question exactly what she''s doing in Victory.','https://www.youtube.com/watch?v=FgmnKsED-jU&ab_channel=WarnerBros.Pictures','Thriller',6.2),
-    (3.0,'NOPE','Daniel Haluuya, Keke Palmer, Steven Yeun','Jordan Peele','The residents of a lonely gulch in inland California bear witness to an uncanny and chilling discovery.','https://www.youtube.com/watch?v=In8fuzj3gck&ab_channel=UniversalPictures','Horror',6.9),
-    (4.0,'Pearl','Mia Goth, David Cornerswet, Tandi Wright','Ti West','In 1918, a young woman on the brink of madness pursues stardom in a desperate attempt to escape the drudgery, isolation and lovelessness of life on her parents'' farm.','https://www.youtube.com/watch?v=L5PW5r3pEOg&ab_channel=A24','Horror',7.0),
-    (5.0,'THE WOMAN KING','Viola Davis, Thuso Mbedu, Lashana Lynch','Gina Prince-Bythewood','A historical epic inspired by true events that took place in The Kingdom of Dahomey, one of the most powerful states of Africa in the 18th and 19th centuries.','https://www.youtube.com/watch?v=3RDaPV_rJ1Y&ab_channel=SonyPicturesEntertainment','Action',6.7);
+    (1,'Confess, Fletch','John Hamm, Caitlin Zerra Rose, Roy Wood Jr.','Greg Mottola','After becoming the prime suspect in multiple murders, Fletch strives to prove his innocence while simultaneously searching for his fiancé''s stolen art collection.','https://www.youtube.com/watch?v=pb2Pu5EjC1s&ab_channel=ParamountMovies',2.0,6.5),
+    (2,'Don''t Worry Darling','Florence Pugh, Harry Styles, Chris Pine','Olivia Wilde','n the 1950s, Alice and Jack live in the idealized community of Victory, an experimental company town that houses the men who work on a top-secret project. While the husbands toil away, the wives get to enjoy the beauty, luxury and debauchery of their seemingly perfect paradise. However, when cracks in her idyllic life begin to appear, exposing flashes of something sinister lurking below the surface, Alice can''t help but question exactly what she''s doing in Victory.','https://www.youtube.com/watch?v=FgmnKsED-jU&ab_channel=WarnerBros.Pictures',8.0,6.2),
+    (3,'NOPE','Daniel Haluuya, Keke Palmer, Steven Yeun','Jordan Peele','The residents of a lonely gulch in inland California bear witness to an uncanny and chilling discovery.','https://www.youtube.com/watch?v=In8fuzj3gck&ab_channel=UniversalPictures',5.0,6.9),
+    (4,'Pearl','Mia Goth, David Cornerswet, Tandi Wright','Ti West','In 1918, a young woman on the brink of madness pursues stardom in a desperate attempt to escape the drudgery, isolation and lovelessness of life on her parents'' farm.','https://www.youtube.com/watch?v=L5PW5r3pEOg&ab_channel=A24',5.0,7.0),
+    (5,'THE WOMAN KING','Viola Davis, Thuso Mbedu, Lashana Lynch','Gina Prince-Bythewood','A historical epic inspired by true events that took place in The Kingdom of Dahomey, one of the most powerful states of Africa in the 18th and 19th centuries.','https://www.youtube.com/watch?v=3RDaPV_rJ1Y&ab_channel=SonyPicturesEntertainment',1.0,6.7);
 
 
 INSERT INTO Showseat VALUES
