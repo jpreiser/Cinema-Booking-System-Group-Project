@@ -34,7 +34,7 @@
                 }}
                 ?>
                 <li id="menu-item-search">
-                    <input type="text" placeholder="Search for Movies">
+                    <a href="search.php">Search for Movies</a>
                 </li>
                 <?php if (isset($_SESSION['login_user']) && !empty($_SESSION['login_user'])) {
                 ?>
