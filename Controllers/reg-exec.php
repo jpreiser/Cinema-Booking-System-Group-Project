@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+include("confirmation-email.php");
 session_start();
 $email = $_POST['email'];
 $result = mysqli_query($db, "SELECT * FROM User WHERE username='$email'");
@@ -21,6 +22,8 @@ if ($num_rows) {
         $result = mysqli_query($db, "SELECT * FROM User WHERE username='$email'");
         mysqli_query($db, "INSERT INTO Customers(first_name, last_name, email, user_id)VALUES('$fname', '$lname', '$email', (SELECT user_id FROM User WHERE username='$email'))");
         $_SESSION['login_user'] = $email;
+        $code = generate_activation_code();
+        send_activation_email($email, $code);
         header("location: register-conf.php");
     } else {
         $e = mysqli_error($db);
