@@ -14,7 +14,7 @@ if ($num_rows) {
     $lname = $_POST['lname'];
     $ccnum = $_POST['ccnum'];
     $expdate = $_POST['exp-date'];
-    $cvc = $_POST['cvc'];
+    $ccv = $_POST['ccv'];
     $address = $_POST['address'];
 
     
@@ -24,6 +24,10 @@ if ($num_rows) {
         $_SESSION['login_user'] = $email;
         $code = generate_activation_code();
         send_activation_email($email, $code);
+        if ($ccnum != null && $expdate != null && $ccv != null && $address != null) {
+            $card_sql = "INSERT INTO credit_cards(card_number, ccv, expiration, billingAddress, customer_id)VALUES('$ccnum','$expdate','$ccv','$address',(SELECT customer_id FROM Customers WHERE customer_id='$_SESSION[login_user]'))";
+            mysqli_query($db, $card_sql);
+        }
         header("location: register-conf.php");
     } else {
         $e = mysqli_error($db);

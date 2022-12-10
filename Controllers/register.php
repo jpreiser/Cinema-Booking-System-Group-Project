@@ -78,7 +78,7 @@
                     </p>
                     <p>
                         <label><b>*Security Code</b></label>
-                        <input type="text" id="cvc" name="cvc">
+                        <input type="text" id="ccv" name="ccv">
                     </p>
                     <p>
                         <label for="address"><b>*Address</b></label>
