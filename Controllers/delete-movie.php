@@ -8,7 +8,7 @@ if (isset($_POST['delete'])) {
     $del_id = $del_id[0];
     $id = $_POST["id_$del_id"];
     
-    
+    //$arch = "INSERT INTO archived_movies(NULL, $id)";
     $del = "DELETE FROM movies WHERE movie_id = '$id'";
     $result = mysqli_query($db,$del);
     if ($result) {
