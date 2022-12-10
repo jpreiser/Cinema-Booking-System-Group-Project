@@ -7,9 +7,9 @@ if (isset($_POST['update'])) {
     $upd_id = $upd_id[0];
 
     $id = $_POST["id_$upd_id"];
-    $code = $_POST['code'];
-    $start = $_POST['start'];
-    $end = $_POST['end'];
+    $code = $_POST["code_$upd_id"];
+    $start = $_POST["start_$upd_id"];
+    $end = $_POST["end_$upd_id"];
 
 
     $select = "SELECT * FROM promotions WHERE promotion_id=$id";

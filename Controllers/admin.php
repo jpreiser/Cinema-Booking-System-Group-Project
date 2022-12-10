@@ -155,11 +155,12 @@ session_start();
                     </tr>
                     -->
                     <tr>
-                        <td class="table-content">MPAA Rating:</td>
+                        <td class="table-content">Rating:</td>
                     </tr>
                     <tr>
                         <td align="center"><input type="text" size="60" name="rating"></td>
                     </tr>
+                    <!--
                     <tr>
                         <td class="table-content">Release Date:</td>
                     </tr>
@@ -172,6 +173,7 @@ session_start();
                     <tr>
                         <td><input type="date" size="60" name="Archive-date"></td>
                     </tr>
+                    -->
                     <tr>
                         <td align="center">
                             <input type="submit" name="submit" value="Add Movie">
@@ -185,35 +187,28 @@ session_start();
         <center>
             <h3>Add Showing</h3>
             <form id="add-showtime" action="add-showtime.php" method="post">
-                <table class="movie-table" style="margin-bottom: 30px;">
-                    <tr>
-                        <td align="center">
-                            <select name="title">
-                                <option value="default">Select a movie</option>
-                                <?php
-                                $movie_select = "SELECT title FROM movies";
-                                $movie_sql = mysqli_query($db, $movie_select);
-                                while ($row = mysqli_fetch_assoc($movie_sql)) { ?>
-                                    <option value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Showroom: <input type="text" name="room">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Time: <input type="datetime-local" name="showtime">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <input type="submit" name="submit" value="Add Time">
-                        </td>
-                    </tr>
+                <?php
+                $sql = "SELECT * FROM movies";
+                $res = mysqli_query($db, $sql);
+                ?>
+                <table class="movie-table">
+                    <?php
+                    if (mysqli_num_rows($res) > 0) {
+                        $i = 0;
+                        while ($row = mysqli_fetch_assoc($res)) { ?>
+                            <tr>
+                                <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['movie_id'] ?>"> </td>
+                                <td> <input type="text" name="title_<?= $i ?>" value="<?php echo $row['title'] ?>"></td>
+                                <td> <input type="text" name="room_<?= $i ?>" placeholder="Showroom"></td>
+                                <td> <input type="date" name="date_<?= $i ?>"></td>
+                                <td> <input type="time" name="time_<?= $i ?>" min="9:00" max="22:00"></td>
+                                <td> <input type="submit" name="update[<?= $i ?>]" value="Update"> </td>
+                            </tr>
+                    <?php
+                            $i++;
+                        }
+                    }
+                    ?>
                 </table>
             </form>
         </center>
@@ -267,79 +262,34 @@ session_start();
     <div id="edit-movie" class="container" style="display:none">
         <center>
             <h3>Edit Movie</h3>
-            <table class="movie-table">
-                <tr>
-                    <td align="center">
-                        <select name="movie-id">
-                            <option value="default">Select a movie</option>
-                            <?php
-                            $movie_select = "SELECT title FROM movies";
-                            $movie_sql = mysqli_query($db, $movie_select);
-                            while ($row = $movie_sql->fetch_assoc()) { ?>
-
-                                <option value="title1"><?php echo $row['title']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
+            <form id="edit-movie" action="edit-movie.php" method="post">
                 <?php
-                $movie_data = "SELECT * FROM movies";
-                $data_sql = mysqli_query($db, $movie_data);
-
-                while ($data_rows = mysqli_fetch_array($data_sql)) {
+                $sql = "SELECT * FROM movies";
+                $res = mysqli_query($db, $sql);
                 ?>
-
-                    <tr>
-                        <td class="table-content">Title:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="title" value="<?php echo $data_rows['title'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">Genre:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="genre" value="<?php echo $data_rows['category'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">Cast:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="cast" value="<?php echo $data_rows['cast_members'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">Director:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="director" value="<?php echo $data_rows['director'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">Trailer:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="trailer" value="<?php echo $data_rows['trailerLink'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">Synopsis:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="synopsis" value="<?php echo $data_rows['Synopsis'] ?>"></td>
-                    </tr>
-                    <tr>
-                        <td class="table-content">MPAA Rating:</td>
-                    </tr>
-                    <tr>
-                        <td align="center"><input type="text" size="60" name="rating" value="<?php echo $data_rows['rating'] ?>"></td>
-                    </tr>
-                <?php
-                }
-                ?>
-                <tr>
-                    <td align="center">
-                        <input type="submit" value="Submit Changes">
-                    </td>
-                </tr>
-            </table>
+                <table class="movie-table">
+                    <?php
+                    if (mysqli_num_rows($res) > 0) {
+                        $i = 0;
+                        while ($row = mysqli_fetch_assoc($res)) { ?>
+                            <tr>
+                                <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['movie_id'] ?>"> </td>
+                                <td> <input type="text" name="title_<?= $i ?>" value="<?php echo $row['title'] ?>"></td>
+                                <td> <input type="text" name="cast_<?= $i ?>" value="<?php echo $row['cast_members'] ?>"></td>
+                                <td> <input type="text" name="director_<?= $i ?>" value="<?php echo $row['director'] ?>"></td>
+                                <td> <input type="text" name="synopsis_<?= $i ?>" value="<?php echo $row['Synopsis'] ?>"></td>
+                                <td> <input type="text" name="trailer_<?= $i ?>" value="<?php echo $row['trailerLink'] ?>"></td>
+                                <td> <input type="text" name="category_<?= $i ?>" value="<?php echo $row['category'] ?>"></td>
+                                <td> <input type="text" name="rating_<?= $i ?>" value="<?php echo $row['rating'] ?>"></td>
+                                <td> <input type="submit" name="update[<?= $i ?>]" value="Update"> </td>
+                            </tr>
+                    <?php
+                            $i++;
+                        }
+                    }
+                    ?>
+                </table>
+            </form>
         </center>
     </div>
     <div id="manage-promos" class="container" style="display:none">
@@ -385,29 +335,29 @@ session_start();
                         <h4>Edit a Promotion</h4>
                     </tr>
                     <form id="edit-promo" action="edit-promo.php" method="post">
+                        <?php
+                        $sql = "SELECT * FROM promotions";
+                        $res = mysqli_query($db, $sql);
+                        ?>
+                        <table class="promo-table">
                             <?php
-                            $sql = "SELECT * FROM promotions";
-                            $res = mysqli_query($db, $sql);
-                            ?>
-                            <table class="movie-table">
-                                <?php
-                                if (mysqli_num_rows($res) > 0) {
-                                    $i = 0;
-                                    while ($row = mysqli_fetch_assoc($res)) { ?>
-                                        <tr>
-                                            <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['promotion_id'] ?>"></td>
-                                            <td> <input type="text" name="code" value="<?php echo $row['code'] ?>"></td>
-                                            <td> <input type="text" name="start" value="<?php echo $row['start_date'] ?>"></td>
-                                            <td> <input type="text" name="end" value="<?php echo $row['end_date'] ?>"></td>
-                                            <td> <input type="submit" name="update[<?= $i ?>]" value="Update"></td>
-                                        </tr>
-                                <?php
-                                        $i++;
-                                    }
+                            if (mysqli_num_rows($res) > 0) {
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['promotion_id'] ?>"></td>
+                                        <td> <input type="text" name="code_<?= $i ?>" value="<?php echo $row['code'] ?>"></td>
+                                        <td> <input type="text" name="start_<?= $i ?>" value="<?php echo $row['start_date'] ?>"></td>
+                                        <td> <input type="text" name="end_<?= $i ?>" value="<?php echo $row['end_date'] ?>"></td>
+                                        <td> <input type="submit" name="update[<?= $i ?>]" value="Update"></td>
+                                    </tr>
+                            <?php
+                                    $i++;
                                 }
-                                ?>
-                            </table>
-                        </form>
+                            }
+                            ?>
+                        </table>
+                    </form>
                 </table>
                 <div id="add-promo">
                     <table>
@@ -445,32 +395,29 @@ session_start();
             <h3>Manage Users</h3>
             <form id="manage-user" action="manage-user.php" method="post">
                 <table class="user-table">
-                    <tr>
-                        <td align="center">
-                            <select name="user-id">
-                                <option value="default">Select a User</option>
-                                <?php
-                                $sql = mysqli_query($db, "SELECT username FROM user");
-                                while ($row = mysqli_fetch_assoc($sql)) { ?>
-                                    <option value="<?php echo $row['username']; ?>"><?php echo $row['username']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <select name="Status">
-                                <option value="default">User Status</option>
-                                <option value="status0" name="active">Active</option>
-                                <option value="status1" name="inactive">Inactive</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <input type="submit" value="Submit Changes">
-                        </td>
-                    </tr>
+                    <form id="edit-promo" action="edit-promo.php" method="post">
+                        <?php
+                        $sql = "SELECT * FROM user";
+                        $res = mysqli_query($db, $sql);
+                        ?>
+                        <table class="promo-table">
+                            <?php
+                            if (mysqli_num_rows($res) > 0) {
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <td> <input type="text" name="id_<?= $i ?>" value="<?php echo $row['user_id'] ?>"></td>
+                                        <td> <input type="text" name="user_<?= $i ?>" value="<?php echo $row['username'] ?>"></td>
+                                        <td> <input type="text" name="status_<?= $i ?>" value="<?php echo $row['account_status'] ?>"></td>
+                                        <td> <input type="submit" name="update[<?= $i ?>]" value="Update"></td>
+                                    </tr>
+                            <?php
+                                    $i++;
+                                }
+                            }
+                            ?>
+                        </table>
+                    </form>
                 </table>
             </form>
         </center>
