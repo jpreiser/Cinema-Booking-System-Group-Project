@@ -39,15 +39,15 @@ include('session.php');
                 <form id="edit-profile" action="profile-update.php" method="post">
                     <p>
                         <label for="fname"><b>First Name</b></label>
-                        <input type="text" id="fname" name="fname" value="<?php echo $rows['first_name'] ?>">
+                        <input type="text" id="fname" name="fname" placeholder="<?php echo $rows['first_name'] ?>">
                     </p>
                     <p>
                         <label for="lname"><b>Last Name</b></label>
-                        <input type="text" id="lname" name="lname" value="<?php echo $rows['last_name'] ?>">
+                        <input type="text" id="lname" name="lname" placeholder="<?php echo $rows['last_name'] ?>">
                     </p>
                     <p>
                         <label for="address"><b>Address</b></label>
-                        <input type="text" id="address" name="address" value="<?php 
+                        <input type="text" id="address" name="address" placeholder="<?php 
                         if(isset($rows2['billingAddress'])){
                             echo $rows2['billingAddress'];
                         }else{
@@ -57,7 +57,7 @@ include('session.php');
                     <p>
                         <label for="ccnum"><b>Credit or Debit Card Number</b></label>
                         
-                        <input type="text" id="ccnum" name="ccnum" value="<?php 
+                        <input type="text" id="ccnum" name="ccnum" placeholder="<?php 
                         if(isset($rows2['card_number'])){
                             echo $rows2['card_number'];
                         }else{
@@ -102,7 +102,7 @@ include('session.php');
                     </p>
                     <p>
                         <label><b>Security Code</b></label>
-                        <input type="text" id="ccv" name="ccv" value="<?php 
+                        <input type="text" id="ccv" name="ccv" placeholder="<?php 
                         if(isset($rows2['ccv'])){
                             echo $rows2['ccv'];
                         }else{
@@ -110,7 +110,7 @@ include('session.php');
                         }?>">
                     </p>
                     <p>
-                        <input type="checkbox" id="promos" value="promos">
+                        <input type="checkbox" id="promos" placeholder="promos">
                         I would like to receive emails about promotions
                     </p>
 
