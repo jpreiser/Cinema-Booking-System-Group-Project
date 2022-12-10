@@ -34,7 +34,7 @@
 
                     <p>
                         <label><b>Email Address</b></label>
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="text" id="email" name="email" placeholder="Email">
                     </p>
                     <p>
                         <label><b>Password</b></label>
