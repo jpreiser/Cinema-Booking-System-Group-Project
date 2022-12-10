@@ -40,9 +40,6 @@ while ($row = $result->fetch_assoc()) {
                     <li id="menu-item-purchase">
                         <a href="movies.php">Now Playing</a>
                     </li>
-                    <li id="menu-item-login">
-                        <a href="index.php">Login</a>
-                    </li>
                     <li id="menu-item-profile">
                         <a href="profile.php">Profile</a>
                     </li>
