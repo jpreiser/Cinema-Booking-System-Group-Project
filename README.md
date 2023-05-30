@@ -1,7 +1,6 @@
-# cs4050_project
+# Cinema booking system group project
 
-Cinema e-booking System for cs4050 @uga. 
-
+Contributors:
 Brett
 Jacob
 JJ
